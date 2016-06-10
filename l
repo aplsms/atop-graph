@@ -1,0 +1,15 @@
+
+CPU
+cpu
+CPL
+MEM
+SWP
+PAG
+LVM/MDD/DSK
+NET
+
+PRG
+PRC
+PRM
+PRD
+PRN
