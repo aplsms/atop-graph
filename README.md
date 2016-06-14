@@ -39,7 +39,7 @@ For example, you have atop logs per host:
 ```
 
 To export metrics, please run
-```
+```bash
 for i in `find . -type f -name atop\*` ; do
     atop -r $i -P ALL |grep -v '^PR' >$i.ST1;
 done
@@ -88,7 +88,7 @@ MEM node-148 1464382801 2016/05/27 14:00:01 1326179 4096 16467019 608133 3002631
 
 Use `parse.awk` for converting metrics by command:
 
-```
+```bash
 awk -f parse.awk C*/*.ST1  >out4influx.txt
 ```
 
@@ -110,7 +110,7 @@ cpu,host=node-148,CPUid=3 sys=5.46,user=28.33,usernice=0.02,idle=61.93,wait=0.66
 ## creating docker container with grafana/influxdb
 
 You should have docker installed, configured, up and running (Docker machine is working fine).
-```
+```bash
 $ docker -v
 Docker version 1.11.2, build b9f10c9
 $ docker ps -a
