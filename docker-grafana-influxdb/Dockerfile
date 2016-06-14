@@ -42,6 +42,9 @@ ADD     ./set_grafana.sh /set_grafana.sh
 ADD     ./set_influxdb.sh /set_influxdb.sh
 RUN     /configure.sh
 
+# Set dashboards
+ADD    ./dashboards/Memory.json /var/lib/grafana/dashboards/Memory.json
+
 # Configure nginx and supervisord
 ADD     ./supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
