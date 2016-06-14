@@ -168,7 +168,7 @@ InfluxDB shell version: 0.13.0
 
 Native version you can found:
 
-- MacOS: brew -- `brew install influsdb`
+- MacOS: brew -- `brew install influxdb`
 - Linux: install from packages or download from [oficial site](https://influxdata.com/downloads/)
 
 To imort data to influxdb, run: `influx -import -path=out -precision=s -host <docker_ip>`.
