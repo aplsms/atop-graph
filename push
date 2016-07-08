@@ -7,5 +7,6 @@ if [ xIP = x ] ; then
 	exit 1
 fi
 
-docker run -v $(pwd)/src:/src -v $(pwd)/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=PUSH --env IP=$IP atop-convert
+docker run -v $(pwd)/src:/src -v $(pwd)/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=PUSH --env IP=$IP --name atop-pusher  atop-convert && \
+docker rm atop-pusher
 

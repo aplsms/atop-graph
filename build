@@ -1,5 +1,4 @@
 #! /bin/bash
-set -x
 
 CONTAINERS=$(find . -type d -name docker-\* -maxdepth 1 )
 
