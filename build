@@ -1,0 +1,24 @@
+#! /bin/bash
+set -x
+
+CONTAINERS=$(find . -type d -name docker-\* -maxdepth 1 )
+
+DIR=$(pwd)
+
+function err() {
+    echo $1 >2
+    exit 1
+}
+
+function warn() {
+    echo $1 >2
+}
+
+for i in $CONTAINERS ; do
+    cd $i
+    NAME=$(basename $(echo $i|sed s/docker-//))
+    docker rm ${NAME}_con   || warn "Can't delete container ${NAME}_con"
+    docker rmi $NAME        || warn "Can't delete image $NAME"
+    docker build -t $NAME . || err "Can't build container $NAME"
+    cd $DIR
+done

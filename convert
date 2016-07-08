@@ -1,0 +1,4 @@
+#! /bin/bash
+
+docker run -v $(pwd)/src:/src -v $(pwd)/dst:/dst --env SRC_PATH=/src --env DST_PATH=/dst --env TASK=CONVERT  atop-convert
+
