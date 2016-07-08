@@ -6,12 +6,12 @@ CONTAINERS=$(find . -type d -name docker-\* -maxdepth 1 )
 DIR=$(pwd)
 
 function err() {
-    echo $1 >2
+    echo $1 >&2
     exit 1
 }
 
 function warn() {
-    echo $1 >2
+    echo $1 >&2
 }
 
 for i in $CONTAINERS ; do
