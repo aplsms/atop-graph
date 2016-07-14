@@ -20,8 +20,12 @@ RUN \
     D=$(pwd); ls -la / /root ; \
     cd /atop-1.26   &&  make all install clean && cd / rm -R /atop-1.26 ; \
     cd /atop-1.27-3 &&  make all install clean && cd / rm -R /atop-1.27-3 ; \
-    cd /atop-2.1    &&  make all install clean && cd / rm -R /atop-2.1  ; \
+    cd /usr/bin; ln -fs atop-1.27-3 /usr/bin/atop-1.27 ;\
+    cd /usr/bin; ln -fs atop-1.27-3 /usr/bin/atopsar-1.27-3 ;\
+    cd /atop-2.1    &&  make all install clean && cd / rm -R /atop-2.1           ; \
     cd /atop-2.2-3  &&  make all genericinstall clean && cd / rm -R /atop-2.2-3  ; \
+    cd /usr/bin; ln -fs atop-2.2-3 /usr/bin/atop-2.2    ;\
+    cd /usr/bin; ln -fs atop-2.2-3 /usr/bin/atopsar-2.2 ;\
     rm -f /etc/atop/atop.daily /etc/rc.d/init.d/atop /etc/cron.d/atop ; \
     ls -la /usr/bin/a* /usr/sbin/a* ;\
     apt-get remove -y build-essential make; apt-get autoremove -y
