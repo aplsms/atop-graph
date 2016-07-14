@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ x$TASK = xCONVERT ] ; then
-    for i in `find $SRC_PATH -type f ` ; do
+    for i in `find $SRC_PATH -type f -name \* ` ; do
         filename=$(basename "$i")
         UUID=$(cat /proc/sys/kernel/random/uuid)
         echo -n "Processing $filename..."
