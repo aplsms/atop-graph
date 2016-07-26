@@ -15,6 +15,8 @@ sed -i -e "s#<--GRAFANA_PORT-->#${GRAFANA_PORT}#g" /etc/grafana/grafana.ini && \
 /etc/init.d/grafana-server start
 /etc/init.d/grafana-server status
 
+sleep 5
+
 curl "http://admin:admin@127.0.0.1:${GRAFANA_PORT}/api/datasources" -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     --data-binary '{"name":"influx","type":"influxdb", "url":"'${INFLUXDB_URL}'", "access":"proxy","isDefault":true, "database":"grafana","user":"'${INFLUXDB_GRAFANA_USER}'","password":"'${INFLUXDB_GRAFANA_PW}'"}'
