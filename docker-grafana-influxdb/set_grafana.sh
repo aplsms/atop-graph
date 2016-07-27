@@ -15,11 +15,26 @@ sed -i -e "s#<--GRAFANA_PORT-->#${GRAFANA_PORT}#g" /etc/grafana/grafana.ini && \
 /etc/init.d/grafana-server start
 /etc/init.d/grafana-server status
 
-sleep 5
+START_TIMEOUT=120
+T=1
+while ! nc -z -w 3 localhost 3000 </dev/null; do 
+    let T=$T+1
+    echo -n "."
+    if [[ $START_TIMEOUT -le $T ]] ; then 
+        echo "unable  to start grafana"
+        exit 1
+    fi
+    sleep 1
+done
 
-curl "http://admin:admin@127.0.0.1:${GRAFANA_PORT}/api/datasources" -X POST \
+echo ""
+echo "Grafana accessible"
+
+curl -s  "http://admin:admin@127.0.0.1:${GRAFANA_PORT}/api/datasources" -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
     --data-binary '{"name":"influx","type":"influxdb", "url":"'${INFLUXDB_URL}'", "access":"proxy","isDefault":true, "database":"grafana","user":"'${INFLUXDB_GRAFANA_USER}'","password":"'${INFLUXDB_GRAFANA_PW}'"}'
+
+echo ""
 
 /etc/init.d/grafana-server stop
 

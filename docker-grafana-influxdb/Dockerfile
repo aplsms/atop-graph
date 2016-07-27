@@ -16,12 +16,12 @@ ENV     INFLUXDB_GRAFANA_PW     grafana
 ENV     ROOT_PW                 root
 
 RUN     apt-get -y update && apt-get -y upgrade ; \
-        apt-get -y install wget supervisor curl  libfontconfig ;\
+        apt-get -y install wget supervisor curl  libfontconfig netcat ;\
         wget -q https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb && \
             dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && rm grafana_${GRAFANA_VERSION}_amd64.deb ; \
         wget -q https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb && \
             dpkg -i influxdb_${INFLUXDB_VERSION}_amd64.deb && rm influxdb_${INFLUXDB_VERSION}_amd64.deb ; \
-        curl -q -L https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64 > /usr/sbin/gosu && \
+        curl -s -q -L https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64 > /usr/sbin/gosu && \
         chmod +x /usr/sbin/gosu
 
 # ----------------- #
