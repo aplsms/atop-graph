@@ -1,4 +1,0 @@
-#! /bin/bash
-
-docker stop grafana-influxdb_con
-docker rm grafana-influxdb_con
