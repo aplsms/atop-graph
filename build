@@ -21,3 +21,5 @@ for i in $CONTAINERS ; do
     docker build -t $NAME . || err "Can't build container $NAME"
     cd $DIR
 done
+
+rm ./src/.keepit ./dst/.keepit
