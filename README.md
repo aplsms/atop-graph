@@ -1,4 +1,4 @@
-#Graphing __atop__ metrics in grafana/influxdb
+# Graphing __atop__ metrics in grafana/influxdb
 
 Just simple way to create graphics from atop metrics. Now it works for:
 
@@ -21,16 +21,16 @@ __NOW also__ working for process-level statistics:
 
 ## General workflow
 
-###What we have to do:
+### What we have to do:
 
 1. Export necessary metrics from atop binary logs
 1. Convert data to the format for export by InfluxDB
 1. Push data to the InfluxDB
 1. have a graphics in graphana
 
-###How we can do that:
+### How we can do that:
 
-####1. build containers.
+#### 1. build containers.
 
 Assume you have docker installed. Let's checkout repo
 
@@ -82,7 +82,7 @@ Successfully built 2fa69e2891eb
 
 please ignore "Errors" -- just attempt to remove nonexistant containers
 
-####2. convert the logs
+#### 2. convert the logs
 
 Copy all your logs to ./src directory, and convert it.
 
@@ -114,7 +114,7 @@ Processing dsvtxvcdbng01_atop_20160705... Done. Result saved to atop-qemu-35bb2d
 Processing dsvtxvcdbng01_atop_20160706... Done. Result saved to atop-qemu-8d838e8b-8f88-48ea-b595-574d224dd13b.txt
 ```
 
-####3. starting grafana and pushing data to InfluxDB
+#### 3. starting grafana and pushing data to InfluxDB
 
 ```
 # ./start_grafana
@@ -137,7 +137,7 @@ atop-pusher
 #
 ```
 
-####4. Login to grafana, and cgoose proper dashboard and timeframe
+#### 4. Login to grafana, and cgoose proper dashboard and timeframe
 
 In a browser go to  `http://<docker-ip>:3000/`. Login: `admin`, Password: `admin`
 
