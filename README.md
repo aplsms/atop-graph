@@ -11,7 +11,7 @@ Just simple way to create graphics from atop metrics. Now it works for:
 - __LVM/MDD/DSK__ disk subsystem statistics
 - __NET__ network statistics per interface and upper level
 
-__NOT__ working for process-level statistics:
+__NOW also__ working for process-level statistics:
 
 - "PRG" (general),
 - "PRC" (cpu),
@@ -104,6 +104,14 @@ Processing dsvtxvcdbng01_atop_20160706... Done. Result saved to atop-8d838e8b-8f
 Processing dsvtxvCkstn02_atop_20160706... Done. Result saved to atop-b159eb06-9f4c-4301-8346-45e71bbad002.txt
 Processing dsvtxvCkstn02_atop_20160707... Done. Result saved to atop-b9a7f047-5562-408d-b3f1-4b63b142eeab.txt
 atop-converter
+```
+
+for convert logs for specifir program, run
+
+```
+# ./convert qemu
+Processing dsvtxvcdbng01_atop_20160705... Done. Result saved to atop-qemu-35bb2da4-39dd-4d3e-ab57-30c54822db2b.txt
+Processing dsvtxvcdbng01_atop_20160706... Done. Result saved to atop-qemu-8d838e8b-8f88-48ea-b595-574d224dd13b.txt
 ```
 
 ####3. starting grafana and pushing data to InfluxDB

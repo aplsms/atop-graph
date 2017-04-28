@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+#set -e
 
 if [ -f /.grafana_configured ]; then
     echo "=> grafana has been configured!"
@@ -12,15 +12,19 @@ sed -i -e "s#<--GRAFANA_PORT-->#${GRAFANA_PORT}#g" /etc/grafana/grafana.ini && \
     chown root:grafana /etc/grafana/grafana.ini
 
 # starting grafana server for adding datasource
-/etc/init.d/grafana-server start
-/etc/init.d/grafana-server status
+#/etc/init.d/grafana-server start
+#/etc/init.d/grafana-server status
+
+service grafana-server start
+update-rc.d grafana-server defaults
+service grafana-server status
 
 START_TIMEOUT=120
 T=1
-while ! nc -z -w 3 localhost 3000 </dev/null; do 
+while ! nc -z -w 3 localhost 3000 </dev/null; do
     let T=$T+1
     echo -n "."
-    if [[ $START_TIMEOUT -le $T ]] ; then 
+    if [[ $START_TIMEOUT -le $T ]] ; then
         echo "unable  to start grafana"
         exit 1
     fi
