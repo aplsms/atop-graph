@@ -34,5 +34,6 @@ RUN rm -f /etc/systemd/system/influxd.service /etc/systemd/system/multi-user.tar
 
 ADD     parse.awk       /
 ADD     convert.sh      /
+Add     pparse.pl       /
 
 CMD     ["/convert.sh"]
