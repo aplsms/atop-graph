@@ -560,6 +560,7 @@
           },
           "lines": true,
           "linewidth": 1,
+          "links": [],
           "nullPointMode": "null",
           "percentage": false,
           "pointradius": 5,
@@ -605,10 +606,16 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
-              "alias": "Priority",
+              "alias": "Current CPU",
               "dsType": "influxdb",
               "groupBy": [
                 {
@@ -642,13 +649,19 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Panel Title",
+          "title": "Priority",
           "tooltip": {
             "shared": true,
             "sort": 0,
@@ -744,6 +757,8 @@
               ],
               "measurement": "PRM",
               "policy": "default",
+              "query": "SELECT mean(\"vmemsz\") FROM \"PRM\" WHERE \"host\" =~ /^$host$/ AND $timeFilter GROUP BY time($interval) fill(null)",
+              "rawQuery": true,
               "refId": "A",
               "resultFormat": "time_series",
               "select": [
@@ -760,7 +775,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "alias": "Resident",
@@ -797,7 +818,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "alias": "Shared",
@@ -834,7 +861,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
@@ -951,7 +984,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "alias": "Real",
@@ -988,7 +1027,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
@@ -1104,7 +1149,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "alias": "Major",
@@ -1141,7 +1192,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
@@ -1257,7 +1314,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "alias": "Writes",
@@ -1278,6 +1341,8 @@
               ],
               "measurement": "PRD",
               "policy": "default",
+              "query": "SELECT mean(\"writes\") FROM \"PRD\" WHERE $timeFilter GROUP BY time($interval) fill(null)",
+              "rawQuery": false,
               "refId": "B",
               "resultFormat": "time_series",
               "select": [
@@ -1294,7 +1359,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
@@ -1409,7 +1480,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             },
             {
               "dsType": "influxdb",
@@ -1445,7 +1522,13 @@
                   }
                 ]
               ],
-              "tags": []
+              "tags": [
+                {
+                  "key": "host",
+                  "operator": "=~",
+                  "value": "/^$host$/"
+                }
+              ]
             }
           ],
           "thresholds": [],
@@ -1501,8 +1584,8 @@
         "allValue": null,
         "current": {
           "tags": [],
-          "text": "sdp-isopsn-219",
-          "value": "sdp-isopsn-219"
+          "text": "sdp-isopsn-091",
+          "value": "sdp-isopsn-091"
         },
         "datasource": "influx",
         "hide": 0,
@@ -1550,8 +1633,11 @@
       {
         "allValue": null,
         "current": {
+          "tags": [],
           "text": "All",
-          "value": "$__all"
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": "influx",
         "hide": 0,
@@ -1573,8 +1659,8 @@
     ]
   },
   "time": {
-    "from": "now-3d",
-    "to": "now"
+    "from": "2017-05-01T23:23:43.000Z",
+    "to": "2017-05-02T22:35:41.863Z"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -1605,4 +1691,3 @@
   "title": "Programm",
   "version": 0
 }
-
