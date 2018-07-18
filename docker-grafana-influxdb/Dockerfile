@@ -1,7 +1,7 @@
 FROM    ubuntu:16.04
 
-ENV GRAFANA_VERSION  4.1.1-1484211277
-ENV INFLUXDB_VERSION 1.2.0
+ENV GRAFANA_VERSION  5.2.1
+ENV INFLUXDB_VERSION 1.6.0
 
 # Prevent some error messages
 ENV DEBIAN_FRONTEND noninteractive
@@ -16,7 +16,7 @@ ENV     INFLUXDB_GRAFANA_PW     grafana
 ENV     ROOT_PW                 root
 
 RUN     apt-get -y update && apt-get -y upgrade ; \
-        apt-get -y install wget supervisor curl  libfontconfig netcat ;\
+        apt-get -y install wget supervisor curl  libfontconfig netcat apt-utils ;\
         wget -q https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb && \
             dpkg -i grafana_${GRAFANA_VERSION}_amd64.deb && rm grafana_${GRAFANA_VERSION}_amd64.deb ; \
         wget -q https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_amd64.deb && \
